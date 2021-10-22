@@ -13,14 +13,25 @@ const phr1 = 'Launch';
   const phr4 = '(CRASH!!!!)';
   const phr5 = 'Rutabagas! That doesn\'t work.'
 
-let test1 = new Test(phr1, 2, 2);
+const test1 = new Test(phr1, 2, 2);
+const test2 = new Test(phr2, 3, 3);
+const test3 = new Test(phr3, 5, 5);
+const test4 = new Test(phr1 + phr2, '2 and 3', 6);
+const test5 = new Test(phr2 + phr3, '3 and 5', 15);
+const test6 = new Test(phr1 + ' ' + phr3 + ' ' + phr4, '2 and 5', 10);
+const test7 = new Test(phr1 + phr2 + ' ' + phr3, '2, 3, and 5', 30);
+const test8 = new Test(phr5, 'NOT 2, 3, or 5', 7);
+
+const tests = [test1, test2, test3, test4, test5, test6, test7, test8]
 
 describe("launchOutput", function(){
 
   //testing code here...
-  it(`should return ${test1.returnString} when input is divisible by ${test1.divisibleBy} evenly`, function() {
-    expect(launchOutput(test1.inputNumber)).toEqual(test1.returnString);
-  })
+  for (i = 0; i < tests.length; i++) {
+    it(`should return ${tests[i].returnString} when input is divisible by ${tests[i].divisibleBy} evenly`, function() {
+      expect(launchOutput(tests[i].inputNumber)).toEqual(tests[i].returnString);
+    });
+  }
 
   it("should return 'Launch' when num is divisible by 2 evenly", function() {
     expect(launchOutput(2)).toEqual('Launch');
