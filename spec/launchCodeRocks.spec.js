@@ -1,8 +1,27 @@
 const launchOutput = require('../launchCodeRocks.js');
 
+class Test {
+  constructor(returnString, divisibleBy, inputNumber) {
+    this.returnString = returnString;
+    this.divisibleBy = divisibleBy;this.inputNumber = inputNumber;
+  }
+}
+
+const phr1 = 'Launch';
+  const phr2 = 'Code';
+  const phr3 = 'Rocks!';
+  const phr4 = '(CRASH!!!!)';
+  const phr5 = 'Rutabagas! That doesn\'t work.'
+
+let test1 = new Test(phr1, 2, 2);
+
 describe("launchOutput", function(){
 
   //testing code here...
+  it(`should return ${test1.returnString} when input is divisible by ${test1.divisibleBy} evenly`, function() {
+    expect(launchOutput(test1.inputNumber)).toEqual(test1.returnString);
+  })
+
   it("should return 'Launch' when num is divisible by 2 evenly", function() {
     expect(launchOutput(2)).toEqual('Launch');
   });
