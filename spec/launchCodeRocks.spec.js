@@ -29,9 +29,9 @@ describe("launchOutput", function(){
 
   //testing code here...
   for (i = 0; i < tests.length; i++) {
-    let num = tests[i].inputNumber;
-    it(`should return ${tests[i].returnString} when input is divisible by ${tests[i].divisibleBy} evenly`, function() {
-      expect(launchOutput(num)).toEqual(tests[i].returnString);
+    let num = tests[0].inputNumber;
+    it(`should return ${tests[0].returnString} when input is divisible by ${tests[0].divisibleBy} evenly`, function() {
+      expect(launchOutput(num)).toEqual(tests[0].returnString);
     });
   };
 
