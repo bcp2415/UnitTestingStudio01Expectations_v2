@@ -1,6 +1,8 @@
 const launchOutput = require('../launchCodeRocks.js');
 
-class Test {
+describe("launchOutput", function(){
+
+  class Test {
   constructor(returnString, divisibleBy, inputNumber) {
     this.returnString = returnString;
     this.divisibleBy = divisibleBy;
@@ -17,24 +19,26 @@ const phr1 = 'Launch';
 const test1 = new Test(phr1, 2, 2);
 const test2 = new Test(phr2, 3, 3);
 const test3 = new Test(phr3, 5, 5);
-const test4 = new Test(phr1 + phr2, '2 and 3', 6);
-const test5 = new Test(phr2 + phr3, '3 and 5', 15);
+const test4 = new Test(phr1 + phr2 + '!', '2 and 3', 6);
+const test5 = new Test(phr2 + ' ' + phr3, '3 and 5', 15);
 const test6 = new Test(phr1 + ' ' + phr3 + ' ' + phr4, '2 and 5', 10);
 const test7 = new Test(phr1 + phr2 + ' ' + phr3, '2, 3, and 5', 30);
 const test8 = new Test(phr5, 'NOT 2, 3, or 5', 7);
 
 const tests = [test1, test2, test3, test4, test5, test6, test7, test8]
 
-describe("launchOutput", function(){
-
   //testing code here...
-  for (i = 0; i < tests.length; i++) {
-    let num = tests[0].inputNumber;
-    it(`should return ${tests[0].returnString} when input is divisible by ${tests[0].divisibleBy} evenly`, function() {
-      expect(launchOutput(num)).toEqual(tests[0].returnString);
+function runTest(str, divNum, inputNum) {
+  it(`should return ${str} when input is divisible by ${divNum} evenly`, function() {
+      expect(launchOutput(inputNum)).toEqual(str);
     });
-  };
+}
 
+for (i = 0; i < tests.length; i++) {
+  runTest(tests[i].returnString, tests[i].divisibleBy, tests[i].inputNumber);   
+};
+
+/*
   it("should return 'Launch' when num is divisible by 2 evenly", function() {
     expect(launchOutput(2)).toEqual('Launch');
   });
@@ -66,5 +70,6 @@ describe("launchOutput", function(){
   it("should return 'Rutabagas! That doesn't work.' if num isn't divisible by 2, 3 or 5", function() {
     expect(launchOutput(7)).toEqual('Rutabagas! That doesn\'t work.');
   });
+  */
 
 });
